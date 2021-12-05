@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+  }
+  
+.resultsContainer {
+    width: 1002px;
+    min-height: 100vh;
+    margin: 0 auto;
+    border: 1px solid black;
+  }
+  
+.resultsDiv {
+    display: inline-block;
+    width: 500px;
+    min-height: 100vh;
+    background-color: white;
+    // margin: 0 auto;
+  }
+  
+.historyDiv {
+    display: inline-block;
+    width: 500px;
+    min-height: 100vh;
+    // margin: 0 auto;
+    background-color: white;
+    color: black;
+    text-align: center;
+  }
+  
+button.btn.btn-primary {
+    border: 1px solid black;
+    animation-duration: 3s;
+    animation-name: submitBtn;
+    animation-iteration-count: infinite;
+  }
+@keyframes submitBtn {
+    from {
+      background-color: red;
+      color: white;
+    }
+    50% {
+      background-color: white;
+      color: red;
+    }
+    to {
+      background-color: red;
+      color: white;
+    }
+  }
+  

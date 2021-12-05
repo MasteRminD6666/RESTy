@@ -1,26 +1,94 @@
-$backgroundColor: #efefef;
-$radius: 40%;
-
 form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button.methodBtn,
+input,
+button {
+  padding: 12px 32px;
+  border-radius: 12px;
+  margin: 0 24px;
+}
+
+button.methodBtn1:focus,
+h2.methodBtn1 {
+  background-color: blue;
+  color: white;
+  font-weight: 600;
+}
+button.methodBtn2:focus,
+h2.methodBtn2 {
+  background-color: green;
+  color: white;
+  font-weight: 600;
+}
+button.methodBtn3:focus,
+h2.methodBtn3 {
+  background-color: orange;
+  color: white;
+  font-weight: 600;
+}
+button.methodBtn4:focus,
+h2.methodBtn4,
+button.methodBtn5 {
+  background-color: red;
+  color: white;
+  font-weight: 600;
+}
+button.methodBtn5 {
+  animation-duration: 3s;
+  animation-name: submitBtn;
+  animation-iteration-count: infinite;
+}
+
+h2,
+h3 {
+  text-align: center;
+}
+
+h2 {
   display: inline-block;
-  margin: auto;
+  border: 3px solid black;
+  border-radius: 12px;
+  padding: 12px 32px;
   width: 200px;
+}
 
-  label {
-    display: flex;
-    margin: 1rem 0;
+h3 {
+  display: inline-block;
+  font-size: 28px;
+  padding: 12px 32px;
+  width: 500px;
+}
 
-    &.methods {
-      span {
-        cursor: pointer;
-        margin-right: 1rem;
-        padding: .25rem .5rem;
-        background: #ccc;
+div.firstFormDiv,
+div.secondFormDiv {
+  display: flex;
+  flex-direction: row;
+}
+div.secondFormDiv textarea {
+  margin: 36px 0;
+  // visibility: hidden;
+}
+div.container1 {
+  width: 1000px;
+  margin: 24px auto;
+}
 
-        &:hover, &.active {
-          background: #fff;
-        }
-      }
-    }
+@keyframes submitBtn {
+  from {
+    background-color: red;
+    color: white;
+  }
+  50% {
+    background-color: white;
+    color: red;
+  }
+  to {
+    background-color: red;
+    color: white;
   }
 }

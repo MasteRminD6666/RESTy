@@ -1,6 +1,8 @@
+import './form.scss'
+
 function Form(props) {
 
-  handleSubmit = (e) => {
+  function handleSubmit (e) {
     e.preventDefault();
     const formData = {
       method: 'GET',
@@ -22,10 +24,14 @@ function Form(props) {
           <br />
         </label>
         <label className='methods'>
-          <span id='get'> GET </span>
-          <span id='post'> POST </span>
-          <span id='put'> PUT </span>
-          <span id='delete'> DELETE </span>
+      
+          
+        <button className="methodBtn1" value="GET" id="btn1">GET</button>
+              <button  className="methodBtn2" value="POST" id="btn2" >POST</button>
+              <button  className="methodBtn3" value="PUT" id="btn3" >PUT</button>
+              <button  className="methodBtn4" value="DELETE" id="btn4" >DELETE</button>
+
+        
         </label>
       </form>
     </>
