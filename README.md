@@ -6,6 +6,8 @@
 ## links and resources
 
 ## <center> [sandbox deployed site](https://codesandbox.io/s/optimistic-germain-bcjkr) </center>
+## <center> [sandbox deployed functional](https://codesandbox.io/s/epic-leaf-hf05l?file=/src/app.js) </center>
+
 
 ### <center> UML </center>
 ![UML ](/assets/RESTy-1-UML.jpg)
