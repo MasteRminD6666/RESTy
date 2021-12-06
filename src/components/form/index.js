@@ -6,7 +6,7 @@ function Form(props) {
     e.preventDefault();
     const formData = {
       method: 'GET',
-      url: 'https://pokeapi.co/api/v2/pokemon',
+     
       method: e.target.id.value,
       url: e.target.url.value,
     };

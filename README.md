@@ -27,4 +27,7 @@ npm run start (will run react-scripts start)
 
 ## Tests
 
-Not required 
+Not required  for aLab 26 
+
+for lab 27 
+![](assets/testing.PNG)
