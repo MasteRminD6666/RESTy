@@ -31,6 +31,6 @@ npm run start (will run react-scripts start)
 
 Not required  for aLab 26 
 
-### for lab 27
+### For Lab 27
 
 ![](assets/testing.PNG)
