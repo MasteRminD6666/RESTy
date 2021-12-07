@@ -3,6 +3,9 @@
 
 ## Author: Rami Zaitoun
 
+### Test-Api 
+[https://swapi.dev/api/people/](https://swapi.dev/api/people/)
+
 ## links and resources
 
 ## <center> [sandbox Class-Based](https://codesandbox.io/s/optimistic-germain-bcjkr) </center>
