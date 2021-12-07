@@ -7,6 +7,7 @@
 
 ## <center> [sandbox Class-Based](https://codesandbox.io/s/optimistic-germain-bcjkr) </center>
 ## <center> [sandbox Functional-Based](https://codesandbox.io/s/epic-leaf-hf05l?file=/src/app.js) </center>
+## <center> [Netlify](61af68ea584557d52fa9cd72--admiring-payne-9062b5)  </center>
 
 
 ### <center> UML </center>
