@@ -1,18 +1,17 @@
 import './form.scss'
+import { useState } from 'react';
 
 function Form(props) {
-
-  function handleSubmit (e) {
+  
+  const [method, setMethod] = useState('GET');
+  function handleSubmit(e) {
     e.preventDefault();
     const formData = {
-      method: 'GET',
-     
-      method: e.target.id.value,
+      method: method,
       url: e.target.url.value,
     };
-
-
     props.handleApiCall(formData);
+    console.log(method);
   }
   return (
     <>
@@ -24,14 +23,10 @@ function Form(props) {
           <br />
         </label>
         <label className='methods'>
-      
-          
-        <button className="methodBtn1" value="GET" id="btn1">GET</button>
-              <button  className="methodBtn2" value="POST" id="btn2" >POST</button>
-              <button  className="methodBtn3" value="PUT" id="btn3" >PUT</button>
-              <button  className="methodBtn4" value="DELETE" id="btn4" >DELETE</button>
-
-        
+          <button type="button" className="methodBtn1" onClick={() => setMethod('GET')}>GET</button>
+          <button type="button" className="methodBtn2" onClick={() => setMethod('POST')}  >POST</button>
+          <button type="button" className="methodBtn3" onClick={() => setMethod('PUT')}  >PUT</button>
+          <button type="button" className="methodBtn4" onClick={() => setMethod('DELETE')}  >DELETE</button>
         </label>
       </form>
     </>
