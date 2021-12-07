@@ -1,6 +1,5 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './app.scss';
-
 // Let's talk about using index.js and some other name in the component folder
 // There's pros and cons for each way of doing this ...
 import Header from './components/header';
@@ -10,53 +9,67 @@ import Results from './components/results';
 import axios from 'axios';
 
 
-
-
 function App() {
   const [data, setData] = useState(null);
-  const [requestParams, setRequestParams] = useState({}); 
- 
+  const [requestParams, setRequestParams] = useState({});
+
+  useEffect(async () => {
+    if (requestParams.method === 'POST') {
+      await axios({
+        method: "post",
+        url: requestParams.url,
+        data: {
+          username: "fake 1",
+          firstname: "fake",
+          lastname: "fake"
+        }
+      });
+    }
+  }, [requestParams]);
+
   async function callApi(formData) {
     // console.log('this is the from data', formData);
     try {
       if (formData.url != '') {
         // console.log('im here ')
-        await axios.get(formData.url ,{headers: {"Accept":"application/json"}}).then(results => {
+        await axios.get(formData.url, { headers: { "Accept": "application/json" } }).then(results => {
           const data = results.data
           console.log(results.data);
           setData({ data });
           setRequestParams(formData);
         });
-        
-      }
-     else{
-      const data = {
-        count: 2,
-        results: [
-          { name: 'fake thing 1', url: 'http://fakethings.com/1' },
-          { name: 'fake thing 2', url: 'http://fakethings.com/2' },
-        ],
-      };
-  
-      setData({ data });
-      setRequestParams(formData);
-      
 
-     }
+      }
+      else {
+        const data = {
+          headers: {
+            'type': 'mock data',
+            'cache-control': 'public, max-age=86400, s-maxage=86400',
+            'content-type': 'application/json; charset=utf-8',
+          },
+          count: 2,
+          results: [
+            { name: 'fake thing 1', url: 'http://fakethings.com/1' },
+            { name: 'fake thing 2', url: 'http://fakethings.com/2' },
+          ],
+        };
+        setData({ data });
+        setRequestParams(formData);
+      }
 
     } catch (error) {
-     
-     console.log(error.message);
+      console.log(error.message);
     }
   }
   return (
     <>
       <Header />
-      <div>Request Method: {requestParams.method}</div>
-      <div>URL: {requestParams.url}</div>
       <Form handleApiCall={callApi} />
-      <Results data={data} />
-      <Footer />
+      <h4>Request Method: {requestParams.method}</h4>
+      <h4>URL: {requestParams.url}</h4>
+      {data ?
+        <Results data={data} /> : <Footer />
+      }
     </>
   )
 }
