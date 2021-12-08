@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import './app.scss';
 // Let's talk about using index.js and some other name in the component folder
 // There's pros and cons for each way of doing this ...
@@ -7,12 +7,16 @@ import Footer from './components/footer';
 import Form from './components/form';
 import Results from './components/results';
 import axios from 'axios';
+import History from './components/history/History';
 
 
 function App() {
   const [data, setData] = useState(null);
   const [requestParams, setRequestParams] = useState({});
-
+  const initialState = {
+    history: [],
+  };
+  const [state, dispatch] = useReducer(historyReducer, initialState);
   useEffect(async () => {
     if (requestParams.method === 'POST') {
       await axios({
@@ -27,6 +31,27 @@ function App() {
     }
   }, [requestParams]);
 
+
+
+  function historyReducer(state = initialState, action) {
+    const { type, payload } = action;
+    switch (type) {
+      case 'SAVE-TO-HISTORY':
+        const history = [...state.history, payload.history];
+        return { history };
+      default:
+        return state;
+    }
+  }
+
+  function historyAction(history) {
+    return {
+      type: 'SAVE-TO-HISTORY',
+      payload: { history },
+    };
+  }
+
+
   async function callApi(formData) {
     // console.log('this is the from data', formData);
     try {
@@ -37,6 +62,7 @@ function App() {
           console.log(results.data);
           setData({ data });
           setRequestParams(formData);
+          dispatch(historyAction(formData));
         });
 
       }
@@ -55,6 +81,7 @@ function App() {
         };
         setData({ data });
         setRequestParams(formData);
+        dispatch(historyAction(formData));
       }
 
     } catch (error) {
@@ -70,6 +97,7 @@ function App() {
       {data ?
         <Results data={data} /> : <Footer />
       }
+      {state.history.length ? <History history={state.history} /> : null}
     </>
   )
 }
